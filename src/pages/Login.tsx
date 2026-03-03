@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "../hooks/useAuth"
+import { useDispatch } from "react-redux"
+import { login } from "../store/auth/authSlice"
+import type { AppDispatch } from "../store/store"
 
 function Login() {
-  const { login } = useAuth()
+  const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
 
   const handleLogin = () => {
-    login()
+    dispatch(login())
     navigate("/dashboard")
   }
 
